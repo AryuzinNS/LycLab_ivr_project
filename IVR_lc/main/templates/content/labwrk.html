@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+	<main style="max-width: 800px; margin: 20px auto">
+		<div class="votings mx-auto">
+            <div class="card border-secondary mx-auto voting-card">
+                <!-- voting -->
+				<div class="card-body">
+                    <div class="d-flex mx-auto justify-content-between">
+                        <h3 class="card-title">{{ title }}</h3>
+                    </div>
+					<p class="card-description">{{ description }}</p>
+                    <a href="{{file.url}}" class="card-link text-reset">Теоретические материалы</a>
+                    <br>
+                    {% if isteacher %}
+					<button class="btn btn-primary"style="position:relative; width:25%"><a href="/theory_change/{{ id }}" class="text-decoration-none text-white">Изменить</a></button>
+                    {% endif %}
+                    <button class="btn btn-danger"><a href="/all_theory/" class="text-decoration-none text-white">Назад</a></button>
+                    <button class="btn btn-success"><a href="/workbench/" class="text-decoration-none text-white">Перейти к выполнению</a></button>
+				</div>
+            </div>
+    </div>
+	</main>
+{% endblock %}

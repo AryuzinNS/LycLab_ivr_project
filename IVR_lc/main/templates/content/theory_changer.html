@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center align-self-center">
+        <div class="col-md-6 ">
+            <div class="reg-header text-center">
+                    <h2>Изменить лабораторную работу</h2>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ error }}
+                {{ form.name.label }} {{ form.name }}
+                {{ form.description.label }} {{ form.description }}
+                {{ form.file.label }} {{ form.file }}
+                <div class="text-center d-flex flex-column mb-2">
+                    <button type="submit" class="btn btn-success mt-3" id="submit_reg">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

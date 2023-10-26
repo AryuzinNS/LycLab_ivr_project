@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="container" style="margin-top: 20px" >
+            <div>
+                <div class="text-center">
+                    <h1 style=" color: rgb(255, 255, 255)">Профиль</h1>
+                    <h2 style=" color: rgb(255, 255, 255)">{{ name }}</h2>
+                    <br>
+                    <div style="margin-top: -10px; text-decoration: none; color: rgb(255, 255, 255) ">Узнайте больше о пользователе!</div>
+                </div>
+            </div>
+            <br>
+            <div class="info">
+                <form method="post" enctype="multipart/form-data">
+                    <div for="names" class="secondary-text" style="text-decoration: none; color: rgb(255, 255, 255)"><h3>Персональная информация</h3></div>
+                    <div name="names" class="">
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt" required="" autocomplete="off" disabled>
+                        </div><br>
+                        <div class="input-group has-validation">
+                        <input type="text" class="form-control" placeholder="Имя: {{ name }}" name="login_txt" required="" autocomplete="off" disabled>
+                        </div><br>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt" required="" autocomplete="off" disabled>
+                        </div><br>
+
+                        <button class="btn btn-danger" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/logout/" class="text-decoration-none text-white">Выход</a></button>
+                         <button class="btn btn-primary" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/profile/edit/" class="text-decoration-none text-white">Редактировать</a></button>
+                        <button class="btn btn-warning" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/" class="text-decoration-none text-white">Назад</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

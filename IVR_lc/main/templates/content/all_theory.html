@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .bg{
+        background-image: url('{% static "img/atom.jpg" %}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .card1 {
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 15px;
+            border-color: white;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center" style="text-decoration: none; color: rgb(255, 255, 255)">Все теоретические материалы</h1>
+        <div class="btn-toolbar mx-auto justify-content-center" style="max-width: 800px;">
+            {% if isteacher %}
+            <button type="button" class="btn btn-outline-success btn-lg">
+                <a href="/create" style="text-decoration: none; color: rgb(255, 255, 255)">Создать</a>
+            </button>
+            {% endif %}
+        </div>
+        <div class="projects mx-auto">
+        {% if works %}
+            {% for work in works %}
+            {{ pro }}
+            <div class="card border-secondary mx-auto project-card card1" style="margin-top: 20px; margin-bottom: 20px; ">
+                  <div class="card-body">
+                    <div class="d-flex mx-auto justify-content-between">
+                       <h3 class="card-title" style="text-decoration: none; color: rgb(255, 255, 255)">{{ work.name }}</h3>
+                     </div>
+                   <p class="card-description" style="text-decoration: none; color: rgb(255, 255, 255)">{{ work.description }}</p>
+                      <button class = "btn btn-lg btn-secondary fw-bold border-white" style="position:relative; width:25%"><a href="theory/{{ work.id }}" class="text-decoration-none text-white">Перейти</a></button>
+                  </div>
+            </div>
+            {% endfor %}
+        {%else%}
+            <h4 class="text-center" style="margin-top: 20px; margin-bottom: 30px">Нет материалов</h4>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

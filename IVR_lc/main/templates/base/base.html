@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_messages %}
+
+    <head>
+        {% include "base/head.html" %}
+        {% bootstrap_css %}
+        {% block extra_css %} {% endblock %}
+        <title>{{ pagename }}</title>
+    </head>
+    <style>
+    .bg{
+        background-image: url('{% static "img/atom.jpg" %}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
+    <body class="bg">
+        {% include "base/header.html" %}
+        <main>
+            {% block content %} {% endblock %}
+        </main>
+        {% include "base/footer.html" %}
+
+        {% bootstrap_javascript %}
+        {% block extra_js %} {% endblock %}
+    </body>
+
+</html>
