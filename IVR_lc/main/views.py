@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from main.forms.forms import RegForm, LoginForm, AddTheoryForm, ProfEditForm, EditTheoryForm
+from main.forms.forms import RegForm, LoginForm, AddTheoryForm, ProfEditForm, EditTheoryForm, SearchPrForm
 from main.models import Profile, Theory
 from django.http.request import HttpRequest
 from django.contrib.auth.decorators import login_required
@@ -39,9 +39,9 @@ def registration_page(request: HttpRequest):
         form = RegForm(request.POST)
         if form.is_valid():
             if form.data["password"] == form.data["sec_password"]:
-                user1 = User.objects.filter(username=form.data["name"])
+                user1 = User.objects.filter(username=form.data["username"])
                 if not user1:
-                    user = User(username=form.data["name"],
+                    user = User(username=form.data["username"],
                                 first_name=form.data["frst_name"],
                                 last_name=form.data["last_name"])
                     user.set_password(form.data['password'])
@@ -53,10 +53,10 @@ def registration_page(request: HttpRequest):
                                           user=user)
                     new_profile.save()
 
-                    user = authenticate(username=form.data["name"], password=form.data["password"])
+                    user = authenticate(username=form.data["username"], password=form.data["password"])
                     login(request, user)
                     url = '/profile/' + str(get_user_id(request))
-                    return redirect(url)
+                    return redirect("/")
                 else:
                     context["error"] = "Этот юзернейм уже занят! Но Вы всегда можете выбрать другой"
         context["form"] = form
@@ -166,15 +166,46 @@ def all_theory(request: HttpRequest):
     """
     id = get_user_id(request)
     prof = Profile.objects.get(id=id)
+    names = [work.name for work in Theory.objects.all()]
+    works = []
+    rq = ""
+    if request.method == "POST":
+        frm = SearchPrForm(request.POST)
+        if frm.is_valid():
+            if frm.data["text"]:
+                rq = frm.data["text"]
+                for i in range(len(names)):
+                    if rq in names[i]:
+                        works.append(Theory.objects.get(name=names[i]))
+            else:
+                works = Theory.objects.all()
+    else:
+        frm = SearchPrForm(request.POST)
+        works = Theory.objects.all()
     context = {
         "datetime": datetime.now(),
         "pagename": "Теоретические материалы",
-        "works": Theory.objects.all(),
-        "isteacher": False
+        "works": works,
+        "isteacher": False,
+        "form": frm,
     }
     if prof.isteacher==1:
         context["isteacher"] = True
     return render(request,"all_theory.html",context)
+
+def reset_filter(request: HttpRequest):
+    frm = SearchPrForm(request.POST)
+    works = Theory.objects.all()
+    context = {
+        "datetime": datetime.now(),
+        "pagename": "Теоретические материалы",
+        "works": works,
+        "isteacher": False,
+        "form": frm,
+    }
+    redirect("/")
+    return redirect("/all_theory/")
+
 
 def theory(request: HttpRequest, id=-1):
     """
@@ -209,7 +240,7 @@ def create_theory(request: HttpRequest):
         if form.is_valid():
                 new_theory = Theory(name=form.data["name"], description=form.data["description"], file=request.FILES["file"], user_id=auth.get_user(request).id)
                 new_theory.save()
-                url = '/all_theory/theory/'+str(new_theory.id)
+                url = '/all_theory/'
                 return redirect(url)
         else:
                 context["error"] = "Введенные данные не соответствуют формату"
