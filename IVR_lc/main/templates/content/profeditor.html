@@ -3,36 +3,54 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .card1 {
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 15px;
+            border-color: white;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
         <div class="container" style="margin-top: 20px" >
             <div>
-                <div class="text-center">
+                <div class="text-center" style="color: rgb(255, 255, 255)">
                     <h1>Редактировать Профиль</h1>
                     <h2>{{ name }}</h2>
                     <br>
-                    <div class="text-secondary" style="margin-top: -10px">Изменить данные пользователя</div>
+                    <div style="margin-top: -10px;color: rgb(255, 255, 255);">Изменить данные пользователя</div>
                 </div>
             </div>
             <br>
-            <div class="info">
-                <form  method="POST">
-                    {% csrf_token %}
-                    <div for="names" class="secondary-text"><h3>Персональная информация</h3></div>
-                    <div name="names" class="">
-                        {{ error }}
-                        {{ form.username.label }} {{ form.username }}
-                        {{ form.first_name.label }} {{ form.first_name }}
-                        {{ form.last_name.label }} {{ form.last_name }}
-                        {{ form.age.label }} {{ form.age }}
-                        {{ form.password.label }} {{ form.password }}
-                        {{ form.sec_password.label }} {{ form.sec_password }}
-                        <button type="submit" class="btn btn-success mt-3" id="submit_reg">Отправить</button>
-                        </div>
+            <div class="card1">
+                    <form  method="POST">
+                        {% csrf_token %}
+                        <div for="names" class="secondary-text" style="color: rgb(255, 255, 255)"><h3>Персональная информация</h3></div>
+                            <div name="names" class="">
+                                {{ error }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.username.label }}</label>
+                                {{ form.username }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.first_name.label }}</label>
+                                {{ form.first_name }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.last_name.label }}</label>
+                                {{ form.last_name }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.age.label }} </label>
+                                {{ form.age }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.password.label }}</label>
+                                {{ form.password }}
+                                <label style="color: rgb(255, 255, 255)">{{ form.sec_password.label }}</label>
+                                {{ form.sec_password }}
+                                    <button type="submit" class="btn btn-success mt-3 fw-bold border-white" style="display: block; margin: 0 auto; width: 350px;" id="submit_reg">Отправить</button>
+                            </div>
+                    </form>
+                </div>
 
-                    </div>
-                </form>
             </div>
         </div>
 {% endblock %}

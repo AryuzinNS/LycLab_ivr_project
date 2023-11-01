@@ -3,6 +3,18 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .card1 {
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 15px;
+            border-color: white;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -17,11 +29,12 @@
             </div>
             <br>
             <div class="info">
-                <form method="post" enctype="multipart/form-data">
+                <div class="card1" style="scale:auto">
+                    <form method="post" enctype="multipart/form-data">
                     <div for="names" class="secondary-text" style="text-decoration: none; color: rgb(255, 255, 255)"><h3>Персональная информация</h3></div>
                     <div name="names" class="">
                         <div class="input-group has-validation">
-                            <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt" required="" autocomplete="off" disabled>
+                            <input type="text" class="form-control" placeholder="Логин: {{ login }}" name="name_txt" required="" autocomplete="off" disabled>
                         </div><br>
                         <div class="input-group has-validation">
                         <input type="text" class="form-control" placeholder="Имя: {{ name }}" name="login_txt" required="" autocomplete="off" disabled>
@@ -30,11 +43,11 @@
                             <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt" required="" autocomplete="off" disabled>
                         </div><br>
 
-                        <button class="btn btn-danger" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/logout/" class="text-decoration-none text-white">Выход</a></button>
-                         <button class="btn btn-primary" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/profile/edit/" class="text-decoration-none text-white">Редактировать</a></button>
-                        <button class="btn btn-warning" style="position: relative; left:200px; width: 250px; font-size: 20px;"><a href="/" class="text-decoration-none text-white">Назад</a></button>
+                        <button class="btn btn-danger fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/logout/" class="text-decoration-none text-white">Выход</a></button>
+                         <button class="btn btn-primary fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/profile/edit/" class="text-decoration-none text-white">Редактировать</a></button>
+                        <button class="btn btn-warning fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/" class="text-decoration-none text-white">Назад</a></button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 {% endblock %}

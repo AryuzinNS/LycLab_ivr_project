@@ -11,16 +11,21 @@
     <div class="row d-flex justify-content-center align-self-center">
         <div class="col-md-6 ">
             <div class="reg-header text-center">
-                    <h2>Изменить лабораторную работу</h2>
+                    <h2 style="color: rgb(255, 255, 255);">Изменить лабораторную работу</h2>
+
             </div>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" class="card1">
                 {% csrf_token %}
                 {{ error }}
-                {{ form.name.label }} {{ form.name }}
-                {{ form.description.label }} {{ form.description }}
-                {{ form.file.label }} {{ form.file }}
+                <label style="color: rgb(255, 255, 255);">{{form.name.label }}</label>  {{ form.name }}
+                <label style="color: rgb(255, 255, 255);">{{form.description.label }}</label> {{ form.description }}
+                <div class="card1">
+
+                    <label style="color: rgb(255, 255, 255);">{{form.file.label }}</label> {{ form.file }}
+                </div>
+
                 <div class="text-center d-flex flex-column mb-2">
-                    <button type="submit" class="btn btn-success mt-3" id="submit_reg">Сохранить</button>
+                    <button type="submit" class="btn btn-success mt-3 fw-bold border-white" id="submit_reg">Сохранить</button>
                 </div>
             </form>
         </div>

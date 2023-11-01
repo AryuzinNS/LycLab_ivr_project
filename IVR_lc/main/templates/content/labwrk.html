@@ -3,26 +3,39 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+<style>
+    .card2 {
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 15px;
+            border-style:  25px white;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 	<main style="max-width: 800px; margin: 20px auto">
 		<div class="votings mx-auto">
-            <div class="card border-secondary mx-auto voting-card">
-                <!-- voting -->
+            <div class="card1">
 				<div class="card-body">
                     <div class="d-flex mx-auto justify-content-between">
-                        <h3 class="card-title">{{ title }}</h3>
+                        <h3 class="card-title" style="color: rgb(255, 255, 255)">{{ title }}</h3>
                     </div>
-					<p class="card-description">{{ description }}</p>
-                    <a href="{{file.url}}" class="card-link text-reset">Теоретические материалы</a>
+					<p class="card-description" style="color: rgb(255, 255, 255)">{{ description }}</p>
+                    <a href="{{file.url}}" class="btn btn-lg btn-secondary fw-bold border-white" style="color: rgb(255, 255, 255)">Теоретические материалы</a>
                     <br>
+
+                    <div>
+                        <button class="btn btn-danger fw-bold border-white"><a href="/all_theory/" class="text-decoration-none text-white">Назад</a></button>
+                        <button class="btn btn-success fw-bold border-white"><a href="/workbench/" class="text-decoration-none text-white">Перейти к выполнению</a></button>
+                    </div>
                     {% if isteacher %}
-					<button class="btn btn-primary"style="position:relative; width:25%"><a href="/theory_change/{{ id }}" class="text-decoration-none text-white">Изменить</a></button>
+					<button class="btn btn-primary fw-bold border-white"style="position:relative;left: 295px;top:-85px;width:100px; height:85px"><a href="/theory_change/{{ id }}" class="text-decoration-none text-white">Изменить</a></button>
                     {% endif %}
-                    <button class="btn btn-danger"><a href="/all_theory/" class="text-decoration-none text-white">Назад</a></button>
-                    <button class="btn btn-success"><a href="/workbench/" class="text-decoration-none text-white">Перейти к выполнению</a></button>
 				</div>
             </div>
     </div>

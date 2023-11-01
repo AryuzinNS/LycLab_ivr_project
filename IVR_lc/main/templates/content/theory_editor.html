@@ -3,26 +3,42 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .card1 {
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 15px;
+            border-color: white;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+    }
+</style>
 
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row d-flex justify-content-center align-self-center">
-        <div class="col-md-6 ">
-            <div class="reg-header text-center" style="text-decoration: none; color: rgb(255, 255, 255)">
+        <div class="col-md-6 card1 ">
+            <div class="reg-header text-center" style="tedecoration: xt-none; color: rgb(255, 255, 255)">
                     <h2>Создайте свою лабораторную работу</h2>
             </div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ error }}
-                {{ form.name.label }} {{ form.name }}
-                {{ form.description.label }} {{ form.description }}
-                {{ form.file.label }} {{ form.file }}
-                <div class="text-center d-flex flex-column mb-2">
-                    <button type="submit" class="btn btn-success mt-3" id="submit_reg">Сохранить</button>
-                </div>
-            </form>
+            <div class="card1">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ error }}
+                    <label>{{ form.name.label }}</label> {{ form.name }}
+                    <label>{{ form.description.label }}</label> {{ form.description }}
+                    <div class="card1">
+                      <label>{{ form.file.label }}</label> {{ form.file }}
+                    </div>
+                    <div class="text-center d-flex flex-column mb-2">
+                        <button type="submit" class="btn btn-success mt-3" id="submit_reg">Сохранить</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -27,7 +27,54 @@
 
 </style>
 {% endblock %}
+{% block header %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'Главная' %}">Назад</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+                </ul>
+                <form class="col-md-6" method="post">
+                    {% csrf_token %}
+                    <div class="input-group" >
+                        {{ error }}
+                        {{ form.text.label }} {{ form.text }}
+                        <span class="input-group-append">
+                                <button class="btn btn-outline-light border border-left-0" type="submit"
+                                        style="height: 45px;">
+                                    <i class="las la-search"></i>
+                                </button>
+                                <button class="btn btn-outline-danger fw-bold border border-left-0" type="button" style="height: 45px;" id="button-addon1">
+                                    <a href="reset/" style="text-decoration: none; color: rgb(255, 255, 255)">Сброс</a>
+                                </button>
+                            </span>
+                    </div>
+                </form>
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="/profile/{{ profile.id }}">{{ user.username }}</a>
+                    <a class="nav-link" href="/logout">Выйти</a>
+                    <a class="nav-link" href="https://youtu.be/dQw4w9WgXcQ?si=b1NH-waqCA2Qdh1H" style="color:#212529">clicc
+                        me</a>
+                </ul>
+                {% else %}
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                    <a class="nav-link" href="{% url 'Регистрация' %}">Регистрация</a>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
+{% endblock %}
 {% block content %}
     <div class="container">
         <h1 class="text-center" style="text-decoration: none; color: rgb(255, 255, 255)">Все теоретические материалы</h1>
