@@ -77,3 +77,28 @@ footer{
 .answered-question{
     color: #65C178;
 }
+.card1 {
+        margin-right: auto;
+        margin-left: auto;
+        box-shadow: 0 35px 25px rgba(129, 124, 124, 0.2);
+        border-radius:  15px;
+        border-style: 25px white;
+        backdrop-filter: blur(14px);
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+}
+.bg{
+			background-image: url('{% static "img/atom.jpg" %}');
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-attachment: fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

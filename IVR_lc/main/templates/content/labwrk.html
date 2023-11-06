@@ -14,30 +14,42 @@
             background-color: rgba(255, 255, 255, 0.2);
             padding: 10px;
     }
+
 </style>
 {% endblock %}
 
 {% block content %}
-	<main style="max-width: 800px; margin: 20px auto">
-		<div class="votings mx-auto">
-            <div class="card1">
-				<div class="card-body">
-                    <div class="d-flex mx-auto justify-content-between">
-                        <h3 class="card-title" style="color: rgb(255, 255, 255)">{{ title }}</h3>
-                    </div>
-					<p class="card-description" style="color: rgb(255, 255, 255)">{{ description }}</p>
-                    <a href="{{file.url}}" class="btn btn-lg btn-secondary fw-bold border-white" style="color: rgb(255, 255, 255)">Теоретические материалы</a>
-                    <br>
+<main style="max-width: 800px; margin: 20px auto">
+    <div class="votings mx-auto">
+        <div class="card1">
+            <div class="card-body">
+                <div class="d-flex mx-auto justify-content-between">
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)">{{ title }}</h3>
+                </div>
+                <p class="card-description" style="color: rgb(255, 255, 255)">{{ description }}</p>
+                <a href="{{file.url}}" class="btn btn-lg btn-secondary fw-bold border-white"
+                   style="color: rgb(255, 255, 255)">Теоретические материалы</a>
+                <br>
 
-                    <div>
-                        <button class="btn btn-danger fw-bold border-white"><a href="/all_theory/" class="text-decoration-none text-white">Назад</a></button>
-                        <button class="btn btn-success fw-bold border-white"><a href="/workbench/" class="text-decoration-none text-white">Перейти к выполнению</a></button>
-                    </div>
-                    {% if isteacher %}
-					<button class="btn btn-primary fw-bold border-white"style="position:relative;left: 295px;top:-85px;width:100px; height:85px"><a href="/theory_change/{{ id }}" class="text-decoration-none text-white">Изменить</a></button>
-                    {% endif %}
-				</div>
+                <div>
+                    <button class="btn btn-danger fw-bold border-white"><a href="/all_theory/"
+                                                                           class="text-decoration-none text-white">Назад</a>
+                    </button>
+                    <button class="btn btn-success fw-bold border-white"><a href="/workbench/"
+                                                                            class="text-decoration-none text-white">Перейти
+                        к выполнению</a></button>
+                </div>
+                {% if isteacher %}
+                <button class="btn btn-primary fw-bold border-white"
+                        style="position:relative;left: 295px;top:-85px;width:100px; height:85px"><a
+                        href="/theory_change/{{ id }}" class="text-decoration-none text-white">Изменить</a></button>
+                {% endif %}
             </div>
+            <div class="card1" style="background-color: gray">
+                <p class="card-description" style="color: rgb(255, 255, 255)">Author: {{ by }}, Email: {{ email }}</p>
+            </div>
+
+        </div>
     </div>
-	</main>
+</main>
 {% endblock %}

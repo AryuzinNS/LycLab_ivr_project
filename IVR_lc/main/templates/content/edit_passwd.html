@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="form-signin m-auto row col-6 justify-content-center text-center">
+    <div class="card1">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row d-flex justify-content-center align-self-center">
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+                <label style="color: rgb(255, 255, 255)">{{ frm2.login.label }}</label>
+                {{ frm2.login }}
+                <label style="color: rgb(255, 255, 255)">{{ frm2.password.label }}</label>
+                {{ frm2.password }}
+                <label style="color: rgb(255, 255, 255)">{{ frm2.sec_password.label }}</label>
+                {{ frm2.sec_password }}
+                <label style="color: rgb(255, 255, 255)">{{ frm2.code.label }}</label>
+                {{ frm2.code }}
+                <button class="w-100 btn btn-lg btn-primary fw-bold border-white" style="margin-top: 20px"
+                        type="submit">Сохранить
+                </button>
+            </div>
+    <div class="col-md-6 " style="margin-top: 20px">
+        </form>
+    </div>
+</main>
+{% endblock %}

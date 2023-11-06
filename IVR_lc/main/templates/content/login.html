@@ -14,38 +14,40 @@
         background-color: rgba(255, 255, 255, 0.2);
         padding: 10px;
 }
+
+
+
 </style>
 {% endblock %}
 
 {% block content %}
 <main class="form-signin m-auto row col-6 justify-content-center text-center">
     <div class="card1">
-          <form action="/login/" method="POST">
-        {% csrf_token %}
-        <h1 class="h3 mb-3" style="color: rgb(255, 255, 255)">Пожалуйста, войдите</h1>
-        <div class="row d-flex justify-content-center align-self-center">
-          <div class="col-md-6 " style="margin-top: 20px">
-             {% if error %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
+        <form action="/login/" method="POST">
+            {% csrf_token %}
+            <h1 class="h3 mb-3" style="color: rgb(255, 255, 255)">Пожалуйста, войдите</h1>
+            <div class="row d-flex justify-content-center align-self-center">
+                <div class="col-md-6 " style="margin-top: 20px">
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <label style="color: rgb(255, 255, 255)">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    <div style="margin-top: 20px">
+                        <label style="color: rgb(255, 255, 255)">{{ form.password.label }}</label>
+                        {{ form.password }}
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary fw-bold border-white" style="margin-top: 20px"
+                            type="submit">Войти
+                    </button>
                 </div>
-              {% endif %}
-              <label style="color: rgb(255, 255, 255)">{{ form.username.label }}</label>
-              {{ form.username }}
-              <div style="margin-top: 20px">
-                  <label style="color: rgb(255, 255, 255)">{{ form.password.label }}</label>
-              {{ form.password }}
-              </div>
-              <button class="w-100 btn btn-lg btn-primary fw-bold border-white" style="margin-top: 20px" type="submit">Войти</button>
-          </div>
-        </div>
-        <div class="col-md-6 " style="margin-top: 20px">
-
-
-
-    <!--    </div>-->
-
-      </form>
+            </div>
+            <div class="col-md-6 " style="margin-top: 20px">
+        </form>
+        <label style="color: rgb(255, 255, 255);">Забыли пароль? - <a href="/email_enter/"
+                                                                      class="text-reset">Сменить</a></label>
     </div>
 </main>
 {% endblock %}

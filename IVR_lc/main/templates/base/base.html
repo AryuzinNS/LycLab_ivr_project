@@ -4,13 +4,13 @@
 {% load django_bootstrap5 %}
 {% bootstrap_messages %}
 
-    <head>
-        {% include "base/head.html" %}
-        {% bootstrap_css %}
-        {% block extra_css %} {% endblock %}
-        <title>{{ pagename }}</title>
-    </head>
-    <style>
+<head>
+    {% include "base/head.html" %}
+    {% bootstrap_css %}
+    {% block extra_css %} {% endblock %}
+    <title>{{ pagename }}</title>
+</head>
+<style>
     .bg{
         background-image: url('{% static "img/atom.jpg" %}');
         background-repeat: no-repeat;
@@ -21,16 +21,19 @@
         -o-background-size: cover;
         background-size: cover;
     }
-    </style>
-    <body class="bg">
-        {% include "base/header.html" %}
-        <main>
-            {% block content %} {% endblock %}
-        </main>
-        {% include "base/footer.html" %}
 
-        {% bootstrap_javascript %}
-        {% block extra_js %} {% endblock %}
-    </body>
+</style>
+<body class="bg ">
+{% block header%}
+{% include "base/header.html" %}
+{%endblock%}
+<main>
+    {% block content %} {% endblock %}
+</main>
+{% include "base/footer.html" %}
+
+{% bootstrap_javascript %}
+{% block extra_js %} {% endblock %}
+</body>
 
 </html>

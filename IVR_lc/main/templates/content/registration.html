@@ -11,30 +11,38 @@
     <div class="row d-flex justify-content-center align-self-center">
         <div class="col-md-6 ">
             <div class="reg-header text-center">
-                    <h2 style="color: rgb(255, 255, 255)">Регистрация</h2>
+                <h2 style="color: rgb(255, 255, 255)">Регистрация</h2>
             </div>
             <form method="POST" class="card1">
                 {% csrf_token %}
-                {{ error }}
+
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.username.label }}</label>
-                 {{ form.username }}
+                {{ form.username }}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.frst_name.label }}</label>
-                    {{ form.frst_name }}
+                {{ form.frst_name }}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.last_name.label }} </label>
-                    {{ form.last_name }}
+                {{ form.last_name }}
+                <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.email.label }} </label>
+                {{ form.email }}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.password.label }} </label>
-                    {{ form.password }}
+                {{ form.password }}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.sec_password.label }} </label>
-                    {{ form.sec_password }}
+                {{ form.sec_password }}
                 <label class="fnt" style="color: rgb(255, 255, 255)">{{ form.is_teacher.label }}</label>
-                    <div class="card1" style="color: rgb(255, 255, 255)">
-                        {{ form.is_teacher }}
-                    </div>
+                <div class="card1" style="color: rgb(255, 255, 255)">
+                    {{ form.is_teacher }}
+                </div>
 
                 <div class="text-center d-flex flex-column mb-2">
                     <button type="submit" class="btn btn-success mt-3" id="submit_reg">Отправить</button>
                 </div>
-                <label class="text-muted text-center">Уже есть аккаунт? - <a href="{% url 'login' %}" class="text-reset" >войти</a></label>
+                <label style="color: rgb(255, 255, 255);">Уже есть аккаунт? - <a href="{% url 'login' %}"
+                                                                                 class="text-reset">войти</a></label>
             </form>
         </div>
     </div>

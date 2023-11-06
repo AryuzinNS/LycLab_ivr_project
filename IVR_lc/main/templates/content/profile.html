@@ -14,40 +14,65 @@
             background-color: rgba(255, 255, 255, 0.2);
             padding: 10px;
     }
+
 </style>
 {% endblock %}
 
 {% block content %}
-        <div class="container" style="margin-top: 20px" >
-            <div>
-                <div class="text-center">
-                    <h1 style=" color: rgb(255, 255, 255)">Профиль</h1>
-                    <h2 style=" color: rgb(255, 255, 255)">{{ name }}</h2>
-                    <br>
-                    <div style="margin-top: -10px; text-decoration: none; color: rgb(255, 255, 255) ">Узнайте больше о пользователе!</div>
-                </div>
-            </div>
+<div class="container" style="margin-top: 20px">
+    <div>
+        <div class="text-center">
+            <h1 style=" color: rgb(255, 255, 255)">Профиль</h1>
+            <h2 style=" color: rgb(255, 255, 255)">{{ name }}</h2>
             <br>
-            <div class="info">
-                <div class="card1" style="scale:auto">
-                    <form method="post" enctype="multipart/form-data">
-                    <div for="names" class="secondary-text" style="text-decoration: none; color: rgb(255, 255, 255)"><h3>Персональная информация</h3></div>
-                    <div name="names" class="">
-                        <div class="input-group has-validation">
-                            <input type="text" class="form-control" placeholder="Логин: {{ login }}" name="name_txt" required="" autocomplete="off" disabled>
-                        </div><br>
-                        <div class="input-group has-validation">
-                        <input type="text" class="form-control" placeholder="Имя: {{ name }}" name="login_txt" required="" autocomplete="off" disabled>
-                        </div><br>
-                        <div class="input-group has-validation">
-                            <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt" required="" autocomplete="off" disabled>
-                        </div><br>
-
-                        <button class="btn btn-danger fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/logout/" class="text-decoration-none text-white">Выход</a></button>
-                         <button class="btn btn-primary fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/profile/edit/" class="text-decoration-none text-white">Редактировать</a></button>
-                        <button class="btn btn-warning fw-bold border-white" style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/" class="text-decoration-none text-white">Назад</a></button>
-                    </div>
-                </div>
+            <div style="margin-top: -10px; text-decoration: none; color: rgb(255, 255, 255) ">Узнайте больше о
+                пользователе!
             </div>
         </div>
+    </div>
+    <br>
+    <div class="info">
+        <div class="card1" style="scale:auto">
+            <form method="post" enctype="multipart/form-data">
+                <div for="names" class="secondary-text" style="text-decoration: none; color: rgb(255, 255, 255)"><h3>
+                    Персональная информация</h3></div>
+                <div name="names" class="">
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" placeholder="Логин: {{ login }}" name="name_txt"
+                               required="" autocomplete="off" disabled>
+                    </div>
+                    <br>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" placeholder="Имя: {{ name }}" name="login_txt"
+                               required="" autocomplete="off" disabled>
+                    </div>
+                     <br>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" placeholder="E-mail: {{ email }}" name="name_txt"
+                               required="" autocomplete="off" disabled>
+                    </div>
+                    <br>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" placeholder="Возраст: {{ age }}" name="name_txt"
+                               required="" autocomplete="off" disabled>
+                    </div>
+                    <br>
+                </div>
+            </form>
+            <button class="btn btn-danger fw-bold border-white"
+                    style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/logout/"
+                                                                                            class="text-decoration-none text-white">Выход</a>
+            </button>
+            <button class="btn btn-primary fw-bold border-white"
+                    style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/profile/edit/"
+                                                                                            class="text-decoration-none text-white">Редактировать</a>
+            </button>
+            <button class="btn btn-secondary fw-bold border-white"
+                    style="position: relative; left:10%; width: 250px; font-size: 20px;"><a href="/"
+                                                                                            class="text-decoration-none text-white">Назад</a>
+            </button>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

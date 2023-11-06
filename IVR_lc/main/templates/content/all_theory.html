@@ -43,15 +43,16 @@
                 </ul>
                 <form class="col-md-6" method="post">
                     {% csrf_token %}
-                    <div class="input-group" >
+                    <div class="input-group">
                         {{ error }}
+
                         {{ form.text.label }} {{ form.text }}
                         <span class="input-group-append">
                                 <button class="btn btn-outline-light border border-left-0" type="submit"
                                         style="height: 45px;">
                                     <i class="las la-search"></i>
                                 </button>
-                                <button class="btn btn-outline-danger fw-bold border border-left-0" type="button" style="height: 45px;" id="button-addon1">
+                                <button class="btn btn-outline-danger fw-bold border border-left-0" type="button" style="height: 45px; width: 70px" id="button-addon1">
                                     <a href="reset/" style="text-decoration: none; color: rgb(255, 255, 255)">Сброс</a>
                                 </button>
                             </span>
@@ -77,30 +78,33 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h1 class="text-center" style="text-decoration: none; color: rgb(255, 255, 255)">Все теоретические материалы</h1>
+        <h1 class="text-center" style="text-decoration: none; color: rgb(255, 255, 255);font-size:3vw;">Все теоретические материалы</h1>
         <div class="btn-toolbar mx-auto justify-content-center" style="max-width: 800px;">
             {% if isteacher %}
             <button type="button" class="btn btn-outline-success btn-lg">
-                <a href="/create" style="text-decoration: none; color: rgb(255, 255, 255)">Создать</a>
+                <a href="/create" style="text-decoration: none; color: rgb(255, 255, 255); width:20%; font-size:2vw;">Создать</a>
             </button>
             {% endif %}
         </div>
         <div class="projects mx-auto">
         {% if works %}
             {% for work in works %}
-            {{ pro }}
-            <div class="card border-secondary mx-auto project-card card1" style="margin-top: 20px; margin-bottom: 20px; ">
-                  <div class="card-body">
-                    <div class="d-flex mx-auto justify-content-between">
-                       <h3 class="card-title" style="text-decoration: none; color: rgb(255, 255, 255)">{{ work.name }}</h3>
-                     </div>
-                   <p class="card-description" style="text-decoration: none; color: rgb(255, 255, 255)">{{ work.description }}</p>
-                      <button class = "btn btn-lg btn-secondary fw-bold border-white" style="position:relative; width:25%"><a href="theory/{{ work.id }}" class="text-decoration-none text-white">Перейти</a></button>
-                  </div>
-            </div>
+                {% for key, value in work.items %}
+                {{ pro }}
+                <div class="card border-secondary mx-auto project-card card1" style="margin-top: 20px; margin-bottom: 20px; ">
+                      <div class="card-body">
+                        <div class="d-flex mx-auto justify-content-between">
+                           <h3 class="card-title" style="text-decoration: none; color: rgb(255, 255, 255);font-size:2vw;">{{ key.name }}</h3>
+                         </div>
+                       <p class="card-description" style="text-decoration: none; color: rgb(255, 255, 255)">{{ key.description }}</p>
+                          <button class = "btn btn-lg btn-secondary fw-bold border-white flex" style="position:relative; width:25%; width: 100%;"><a href="theory/{{ key.id }}" class="text-decoration-none text-white">Перейти</a></button>
+                          <p class="card-description" style="text-decoration: none; color: rgb(255, 255, 255)">By: {{ value }}</p>
+                      </div>
+                </div>
+                {% endfor %}
             {% endfor %}
         {%else%}
-            <h4 class="text-center" style="margin-top: 20px; margin-bottom: 30px">Нет материалов</h4>
+            <h4 class="text-center" style="margin-top: 20px; margin-bottom: 30px;color: rgb(255, 255, 255)">Нет материалов</h4>
         {% endif %}
         </div>
     </div>

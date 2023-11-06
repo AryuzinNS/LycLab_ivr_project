@@ -14,6 +14,8 @@
             background-color: rgba(255, 255, 255, 0.2);
             padding: 10px;
     }
+
+
 </style>
 
 {% endblock %}
@@ -23,16 +25,20 @@
     <div class="row d-flex justify-content-center align-self-center">
         <div class="col-md-6 card1 ">
             <div class="reg-header text-center" style="tedecoration: xt-none; color: rgb(255, 255, 255)">
-                    <h2>Создайте свою лабораторную работу</h2>
+                <h2>Создайте свою лабораторную работу</h2>
             </div>
             <div class="card1">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ error }}
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                     <label>{{ form.name.label }}</label> {{ form.name }}
                     <label>{{ form.description.label }}</label> {{ form.description }}
                     <div class="card1">
-                      <label>{{ form.file.label }}</label> {{ form.file }}
+                        <label>{{ form.file.label }}</label> {{ form.file }}
                     </div>
                     <div class="text-center d-flex flex-column mb-2">
                         <button type="submit" class="btn btn-success mt-3" id="submit_reg">Сохранить</button>
